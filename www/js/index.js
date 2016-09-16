@@ -2,19 +2,25 @@ var app = {
     // Application Constructor
     initialize: function() {
         console.log("inicializando app");
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready'k, this.onDeviceReady, false);
         console.log("app inicializada");
-        $("#btnfoto").click(function(event) {
-            alert("Ahora me haría la foto");
-        });
     },
     onDeviceReady: function() {
         console.log("El dispositivo ya está preparado");
         $("#btnfoto").click(function(event) {
-            alert("Ahora me haría la foto");
+            navigator.camera.getPicture(cameraSuccess, cameraError, {});
         });
 
     }
 };
 
 app.initialize();
+
+
+function cameraSuccess () {
+    alert ("La camara ha funcionado bien");
+}
+
+function cameraError () {
+    alert ("Ha habido un error al hacer la foto");
+}
